@@ -58,15 +58,14 @@ public class ServicoReserva {
                 .findFirst()
                 .orElse(null);
 
-                
         try {
             if (espaco == null) {
                 throw new EspacoNaoEncontradoException();
             }
-            System.out.print("Data e hora de início (YYYY-MM-DD HH:mm): ");
+            System.out.print("Data e hora de início (Ano-Mes-Dia hora:minuto |||| exemplo: 2025-07-23 12:30 ):");
             LocalDateTime inicio = lerDataHora(scanner);
 
-            System.out.print("Data e hora de fim (YYYY-MM-DD HH:mm): ");
+            System.out.print("Data e hora de início (Ano-Mes-Dia hora:minuto |||| exemplo: 2025-07-23 12:30 ):");
             LocalDateTime fim = lerDataHora(scanner);
 
             if (fim.isBefore(inicio)) {
@@ -98,8 +97,9 @@ public class ServicoReserva {
             System.out.println("Reserva realizada com sucesso!");
 
         } catch (DateTimeParseException e) {
-            System.out.println("Formato de data/hora inválido. Use 'YYYY-MM-DD HH:mm'.");
-        } catch (EspacoNaoEncontradoException | DiasExcedidosException | HorarioIndisponivelException | DataFimAntesInicioException e){
+            System.out.println("Formato de data/hora inválido. Use 'Ano-Mes-Dia hora:minuto'.");
+        } catch (EspacoNaoEncontradoException | DiasExcedidosException | HorarioIndisponivelException
+                | DataFimAntesInicioException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Erro inesperado: " + e.getMessage());

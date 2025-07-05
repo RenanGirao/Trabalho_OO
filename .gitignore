@@ -1,0 +1,19 @@
+# Arquivos compilados Java
+*.class
+
+# Diretórios de build
+bin/
+build/
+out/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp 
