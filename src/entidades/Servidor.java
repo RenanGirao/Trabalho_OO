@@ -1,8 +1,6 @@
 package entidades;
 
-import java.io.Serializable;
-
-public abstract class Servidor extends Usuario implements Serializable {
+public abstract class Servidor extends Usuario {
     public Servidor(String nome, String email, String telefone, String senha, String matricula) {
         super(nome, email, telefone, senha, matricula);
     }
@@ -12,3 +10,4 @@ public abstract class Servidor extends Usuario implements Serializable {
         return true;
     }
 }
+
