@@ -18,7 +18,9 @@ public abstract class Usuario implements Serializable {
     }
 
     public abstract boolean podeReservarPorMaisDeUmDia();
-    public String getNome() { return nome; }
+    public String getNome() { 
+        return nome; 
+    }
 
     public String getEmail() {
         return email;
