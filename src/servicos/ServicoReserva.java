@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ServicoReserva {
     private static List<Reserva> reservas = new ArrayList<>();
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public static void carregarReservas() {
         List<Reserva> carregadas = reservas = Persistencia.carregarReservas();
@@ -62,10 +62,10 @@ public class ServicoReserva {
             if (espaco == null) {
                 throw new EspacoNaoEncontradoException();
             }
-            System.out.print("Data e hora de início (Ano-Mes-Dia hora:minuto |||| exemplo: 2025-07-23 12:30 ):");
+            System.out.print("Data e hora de início (Dia-Mês-Ano hora:minuto |||| exemplo: 23-07-2025 12:30 ):");
             LocalDateTime inicio = lerDataHora(scanner);
 
-            System.out.print("Data e hora de início (Ano-Mes-Dia hora:minuto |||| exemplo: 2025-07-23 12:30 ):");
+            System.out.print("Data e hora de fim (Dia-Mês-Ano hora:minuto |||| exemplo: 23-07-2025 12:30 ):");
             LocalDateTime fim = lerDataHora(scanner);
 
             if (fim.isBefore(inicio)) {
@@ -97,7 +97,7 @@ public class ServicoReserva {
             System.out.println("Reserva realizada com sucesso!");
 
         } catch (DateTimeParseException e) {
-            System.out.println("Formato de data/hora inválido. Use 'Ano-Mes-Dia hora:minuto'.");
+            System.out.println("Formato de data/hora inválido. Use 'Dia-Mês-Ano hora:minuto'.");
         } catch (EspacoNaoEncontradoException | DiasExcedidosException | HorarioIndisponivelException
                 | DataFimAntesInicioException e) {
             System.out.println(e.getMessage());
