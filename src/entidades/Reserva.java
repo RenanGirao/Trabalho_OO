@@ -41,9 +41,13 @@ public class Reserva implements Serializable {
     }
 
     public boolean conflitaCom(Reserva outra) {
-        return this.espaco.getNome().equals(outra.espaco.getNome()) &&
-               !(this.fim.isBefore(outra.inicio) || this.inicio.isAfter(outra.fim));
+    if (this.espaco.getNome().equals(outra.espaco.getNome())) {
+        if (!(this.fim.isBefore(outra.inicio) || this.inicio.isAfter(outra.fim))) {
+            return true; 
+        }
     }
+    return false; 
+}
 
     @Override
     public String toString() {
