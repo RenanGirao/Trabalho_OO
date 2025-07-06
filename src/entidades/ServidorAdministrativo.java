@@ -1,8 +1,6 @@
 package entidades;
 
-import java.io.Serializable;
-
-public class ServidorAdministrativo extends Servidor implements Serializable {
+public class ServidorAdministrativo extends Servidor {
     private String funcao;
     private String departamento;
 
@@ -11,5 +9,13 @@ public class ServidorAdministrativo extends Servidor implements Serializable {
         super(nome, email, telefone, senha, matricula);
         this.funcao = funcao;
         this.departamento = departamento;
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public String getDepartamento() {
+        return departamento;
     }
 }
