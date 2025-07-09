@@ -53,10 +53,14 @@ public class ServicoReserva {
         System.out.print("Nome do espaço: ");
         String nomeEspaco = scanner.nextLine();
 
-        EspacoFisico espaco = espacos.stream()
-                .filter(e -> e.getNome().equalsIgnoreCase(nomeEspaco))
-                .findFirst()
-                .orElse(null);
+        EspacoFisico espaco = null;
+        
+for (EspacoFisico e : espacos) {
+    if (e.getNome().equalsIgnoreCase(nomeEspaco)) {
+        espaco = e;
+        break;
+    }
+}
 
         try {
             if (espaco == null) {
