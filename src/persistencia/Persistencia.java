@@ -18,10 +18,20 @@ public class Persistencia {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private static <T> List<T> carregarArquivo(String nomeArquivo) {
+    static <T> List<T> carregarArquivo(String nomeArquivo) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(BASE_PATH + nomeArquivo))) {
-            return (List<T>) ois.readObject();
+            Object obj = ois.readObject();
+            if (obj instanceof List<?>) {
+                List<?> tempList = (List<?>) obj;
+                List<T> result = new java.util.ArrayList<>();
+                for (Object item : tempList) {
+                    result.add((T) item); // Cast elemento a elemento
+                }
+                return result;
+            } else {
+                System.out.println("O arquivo não contém uma lista.");
+                return new java.util.ArrayList<>();
+            }
         } catch (FileNotFoundException e) {
             return new java.util.ArrayList<>();
         } catch (IOException | ClassNotFoundException e) {
